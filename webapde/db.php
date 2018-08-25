@@ -1,6 +1,6 @@
 <?php
 	// Enter your Host, username, password, database below.
-	$con = mysqli_connect("localhost","root","","introdb");
+	$con = mysqli_connect("localhost","root","boop","webapde");
 	// Check connection
 	if (mysqli_connect_errno())
 	{

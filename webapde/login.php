@@ -22,23 +22,23 @@
 				
 				require ('db.php');
 				// Get values from form.
-				$trainerUsername = $_POST['trainerUsername'];
-				$trainerPassword = $_POST['trainerPassword'];
+				$username = $_POST['username'];
+				$password = $_POST['password'];
 				
-				$sql = "SELECT * FROM trainer
-						WHERE trainerUsername LIKE '$trainerUsername' AND trainerPassword LIKE '$trainerPassword' ";	
+				$sql = "SELECT * FROM users
+						WHERE username LIKE '$username' AND password LIKE '$password' ";	
 				$result = $con->query($sql);
 
 				if ($result->num_rows > 0) {
 					$row = $result->fetch_assoc();
-					$trainerID = $row['trainerID'];
+					$userID = $row['userID'];
 
 					// Set values to session.
 					session_start();
-					$_SESSION['trainerID'] = $trainerID;
+					$_SESSION['userID'] = $userID;
 
 					// Go to another page
-					header("Location: index.php");
+					header("Location: webby\index.html");
 
 				}
 				else {
@@ -51,8 +51,8 @@
 		<div class="form">
 			<h1>Log In</h1>
 				<form action="" method="post" name="login">
-					<input type="text" name="trainerUsername" placeholder="Username" required />
-					<input type="password" name="trainerPassword" placeholder="Password" required />
+					<input type="text" name="username" placeholder="Username" required />
+					<input type="password" name="password" placeholder="Password" required />
 					<input name="submit" type="submit" value="Login" />
 				</form>
 			<p>Not registered yet? <a href='registration.php'>Register Here</a></p>
