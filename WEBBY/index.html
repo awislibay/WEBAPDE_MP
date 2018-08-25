@@ -15,7 +15,7 @@ ul{
     width: 0;
     position: absolute;
     z-index: 1;
-    top: 0;
+    top: 17px;
     background-color: transparent;
     overflow-x: hidden;
     transition: 0.5s;
@@ -26,7 +26,7 @@ ul{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: grey;
+    color: black;
     display: right;
     transition: 0.3s;
 
@@ -39,9 +39,30 @@ ul{
 .sidenav .closebtn {
     position:absolute;
     top: 0;
-    right: 0px;
+    right: 1000px;
     font-size: 36px;
     margin-left: 50px;
+
+}
+
+.controller_img {
+  background:url(icon2.png);
+  background-size: 200px 200px;
+  background-repeat:no-repeat;
+  position: absolute;
+  top: 720px;
+  right: 40px;
+  width: 256px;
+  height: 256px;
+}
+
+.profile-image:hover .overlay {
+  position:absolute;
+  width: 123px;
+  height: 125px;
+  z-index: 100;
+  background: url(hoverBtn.png);
+  cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {
@@ -56,14 +77,21 @@ ul{
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <ul>
   <ul><a href="#">Profile</a> </ul>
+  <ul><a href="#">Pets</a> </ul>
   <ul><a href="#">Inventory</a> </ul>
   <ul><a href="#">Shop</a> </ul>
-  <ul><a href="#">Pets</a> </ul>
   <ul><a href="#">Settings</a> </ul>
 </ul>
 </div>
 
-<span style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="paw_decal.png" style="position:absolute,width:100px;height:70px;"></span>
+<div class = "profile-image">
+<span class = "overlay",style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="HOUSElogo.png" style="position:absolute,width:123px;height:125px;"></span>
+</div>
+
+
+<a href="miniGame.html">
+<div id="controller_img" class="controller_img" ></div>
+</a>
 
 <script>
 function openNav() {
