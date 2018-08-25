@@ -117,6 +117,28 @@ ul.dropdown {
   height: 80px;
 }
 
+.ball_img {
+  background:url(Ball.png);
+  background-size: 200px 200px;
+  background-repeat:no-repeat;
+  position: absolute;
+  top: 720px;
+  right:1600px;
+  width: 256px;
+  height: 256px;
+}
+
+.bowl_img {
+  background:url(Bowl.png);
+  background-size: 306px 178px;
+  background-repeat:no-repeat;
+  position: absolute;
+  top: 750px;
+  right:1000px;
+  width: 612px;
+  height: 356px;
+}
+
 .profile-image:hover .overlay {
   position:absolute;
   width: 123px;
@@ -187,9 +209,18 @@ ul.dropdown {
 </a>
 
 <a href="#">
+  <div id ="ball_img" class="ball_img"></div>
+</a>
+
+<a href="#">
+  <div id ="bowl_img" class="bowl_img"></div>
+</a>
+
+<a href="#">
   <div id ="coin_img" class="coin_img"></div>
   <p class="score">Score: <span id="score_value">0</span></p>
 </a>
+
 
 <script>
 function openNav() {
