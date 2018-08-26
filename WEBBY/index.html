@@ -76,9 +76,9 @@ ul.dropdown {
 
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: #f9f9f9;
-    min-width: 200px;
+    min-width: 50px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -88,7 +88,37 @@ ul.dropdown {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    text-align: lef
+}
+
+.dropup {
+  float: left;
+}
+
+.dropup-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    bottom:10px;
+    top:637px;
+    left:1400px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     text-align: left;
+}
+
+.dropup-content a:hover {background-color: #f9f9f9}
+
+.dropup:hover .dropup-content {
+     display: block;
 }
 
 .dropdown:hover .dropdown-content {
@@ -214,14 +244,12 @@ ul.dropdown {
   </div>
 </div>
 
-
-<a href="miniGame.html">
- <ul class = "dropdown">
-  <div class="dropdown-content">
-        <a href="#">Mini Game 1</a>
-        <a href="#">Mini Game 2</a>
+<div class = "dropup">
 <div id="controller_img" class="controller_img" ></div>
-</a>
+<div class = "dropup-content">
+  <a href="#">Mini Game 1</a>
+  <a href="#">Mini Game 2</a>
+</div> </div> 
 
 <a href="#">
   <div id ="ball_img" class="ball_img"></div>
@@ -237,7 +265,6 @@ ul.dropdown {
 
 <a href="#">
   <div id ="coin_img" class="coin_img"></div>
-  <p class="score">Score: <span id="score_value">0</span></p>
 </a>
 
 
