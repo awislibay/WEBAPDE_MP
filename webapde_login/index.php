@@ -101,7 +101,7 @@ ul.dropdown {
 }
 
 .controller_img {
-  background:url(icon2.png);
+  background:url(WEBBY/icon2.png);
   background-size: 200px 200px;
   background-repeat:no-repeat;
   position: absolute;
@@ -112,7 +112,7 @@ ul.dropdown {
 }
 
 .coin_img {
-  background:url(coins.png);
+  background:url(WEBBY/coins.png);
   background-size: 80px 80px;
   background-repeat:no-repeat;
   position: absolute;
@@ -123,7 +123,7 @@ ul.dropdown {
 }
 
 .ball_img {
-  background:url(Ball.png);
+  background:url(WEBBY/Ball.png);
   background-size: 200px 200px;
   background-repeat:no-repeat;
   position: absolute;
@@ -134,7 +134,7 @@ ul.dropdown {
 }
 
 .bowl_img {
-  background:url(Bowl.png);
+  background:url(WEBBY/Bowl.png);
   background-size: 306px 178px;
   background-repeat:no-repeat;
   position: absolute;
@@ -145,7 +145,7 @@ ul.dropdown {
 }
 
 .dog_gif {
-  background:url(Pug.gif);
+  background:url(WEBBY/Pug.gif);
   background-size: 500px 281px;
   background-repeat:no-repeat;
   position: absolute;
@@ -160,7 +160,7 @@ ul.dropdown {
   width: 123px;
   height: 125px;
   z-index: 100;
-  background: url(hoverBtn.png);
+  background: url(WEBBY/hoverBtn.png);
   cursor: pointer;
 }
 
@@ -181,11 +181,11 @@ ul.dropdown {
 }
 </style>
 </head>
-<body background="LivingRoomBG.png">
+<body background="WEBBY/LivingRoomBG.png">
 
 <div id="mymenu" class="menu">
   <div class = "profile-image" style="float:left;">
-    <span class = "overlay"style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="HOUSElogo.png" style="position:absolute,width:123px;height:125px;"></span>
+    <span class = "overlay"style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="WEBBY/HOUSElogo.png" style="position:absolute,width:123px;height:125px;"></span>
   </div>
 <div id="mySidenav" class="sidenav">
 <ul>
