@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2018 at 07:47 AM
+-- Generation Time: Aug 27, 2018 at 09:09 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -80,25 +80,32 @@ INSERT INTO `pet` (`petID`, `name`, `sprite`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `petlist`
+--
+
+CREATE TABLE `petlist` (
+  `userID` int(11) NOT NULL,
+  `petID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `player`
 --
 
 CREATE TABLE `player` (
   `userID` int(11) NOT NULL,
-  `pet1ID` int(11) NOT NULL,
-  `pet2ID` int(11) NOT NULL,
   `inventoryID` int(11) NOT NULL,
-  `moneyID` int(11) NOT NULL,
-  `profileID` int(11) NOT NULL,
-  `img` blob NOT NULL
+  `money` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `player`
 --
 
-INSERT INTO `player` (`userID`, `pet1ID`, `pet2ID`, `inventoryID`, `moneyID`, `profileID`, `img`) VALUES
-(1, 0, 0, 0, 0, 0, '');
+INSERT INTO `player` (`userID`, `inventoryID`, `money`) VALUES
+(0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -180,12 +187,6 @@ ALTER TABLE `pet`
   ADD PRIMARY KEY (`petID`);
 
 --
--- Indexes for table `player`
---
-ALTER TABLE `player`
-  ADD PRIMARY KEY (`userID`);
-
---
 -- Indexes for table `store`
 --
 ALTER TABLE `store`
@@ -224,12 +225,6 @@ ALTER TABLE `inventory`
 --
 ALTER TABLE `pet`
   MODIFY `petID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `player`
---
-ALTER TABLE `player`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `store`
