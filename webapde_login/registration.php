@@ -26,10 +26,7 @@
                 $result = $con->query($sql);
 
                 // If username is taken
-                if($result->num_rows > 0) {
-                    $error = "<error>Username has been taken :c.</error><br><br>";
-                }
-                else if($result->num_rows == 0) {
+                
 
                     // SQL
                     $sql = "INSERT INTO users (username, birthday, password)
@@ -39,13 +36,28 @@
                     if ($con->query($sql) === TRUE) {
                         echo "New account created successfully<br>";
                         // Go to another page
-                        header("Location: login.php");
+                        
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
                     }
 
-                }                
-                
+                               
+                $sql = "SELECT * FROM users
+                        WHERE username LIKE '$username' AND password LIKE '$password' ";    
+                $result = $con->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $userID = $row['userID'];
+
+                    // Set values to session.
+                    session_start();
+                    $_SESSION['userID'] = $userID;
+
+                    // Go to another page
+                    header("Location: petSelector.php");
+
+                }
 
             }
 
