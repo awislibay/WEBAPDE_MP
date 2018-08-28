@@ -1,6 +1,6 @@
 <?php
 //include auth.php file on all secure pages
-	include('auth.php');
+  include('auth.php');
   include('db.php');
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ ul{
 }
 
 .sidenav {
-    height: 100%;
+    height:25%;
     width: 100%;
     position: absolute;
     z-index: 1;
@@ -60,7 +60,7 @@ ul{
 .sidenav .closebtn {
     position:absolute;
     top: 10px;
-    right: 500px;
+    right: 200px;
     font-size: 36px;
     margin-left: 50px;
 
@@ -81,9 +81,9 @@ ul.dropdown {
 
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: #f9f9f9;
-    min-width: 200px;
+    min-width: 50px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -93,7 +93,37 @@ ul.dropdown {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    text-align: lef
+}
+
+.dropup {
+  float: left;
+}
+
+.dropup-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    bottom:10px;
+    top:637px;
+    left:1400px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
     text-align: left;
+}
+
+.dropup-content a:hover {background-color: #f9f9f9}
+
+.dropup:hover .dropup-content {
+     display: block;
 }
 
 .dropdown:hover .dropdown-content {
@@ -101,7 +131,7 @@ ul.dropdown {
 }
 
 .controller_img {
-  background:url(WEBBY/icon2.png);
+  background:url(source/icon2.png);
   background-size: 200px 200px;
   background-repeat:no-repeat;
   position: absolute;
@@ -112,18 +142,18 @@ ul.dropdown {
 }
 
 .coin_img {
-  background:url(WEBBY/coins.png);
-  background-size: 80px 80px;
+  background:url(source/coins.png);
+  background-size: 200px 90px;
   background-repeat:no-repeat;
   position: absolute;
-  top: 10px;
-  right:90px;
-  width: 80px;
-  height: 80px;
+  top: 5px;
+  right:50px;
+  width: 200px;
+  height: 100px;
 }
 
 .ball_img {
-  background:url(WEBBY/Ball.png);
+  background:url(source/Ball.png);
   background-size: 200px 200px;
   background-repeat:no-repeat;
   position: absolute;
@@ -134,7 +164,7 @@ ul.dropdown {
 }
 
 .bowl_img {
-  background:url(WEBBY/Bowl.png);
+  background:url(source/Bowl.png);
   background-size: 306px 178px;
   background-repeat:no-repeat;
   position: absolute;
@@ -143,9 +173,22 @@ ul.dropdown {
   width: 612px;
   height: 356px;
 }
+<?php
+              if($_SESSION['userID'] != NULL)
+              $userID = $_SESSION['userID'];
+              // SQL
+              $sql = "SELECT pet FROM users u 
+                WHERE u.userID LIKE $userID ";
+              $result = $con->query($sql);
 
-.dog_gif {
-  background:url(WEBBY/Pug.gif);
+              if($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                  $pet = $row['pet'];
+              }
+
+          ?>
+.pet {
+  background:url("petSprites/<?php echo $pet?>.png");
   background-size: 500px 281px;
   background-repeat:no-repeat;
   position: absolute;
@@ -160,7 +203,7 @@ ul.dropdown {
   width: 123px;
   height: 125px;
   z-index: 100;
-  background: url(WEBBY/hoverBtn.png);
+  background: url(source/hoverBtn.png);
   cursor: pointer;
 }
 
@@ -174,18 +217,34 @@ ul.dropdown {
 .score_value{
    font-size: inherit;
     }
-
+#pop{
+ height:380px;
+ width:470px;
+ position:fixed;
+ bottom:20%;
+ right:40%;
+ border:2px solid;
+ padding:10px;
+ background:#fff;
+ border-radius:9px;
+ display:none;
+}
+#close{
+ right:5px;
+ top:5;
+ float:right;
+}
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
 </style>
 </head>
-<body background="WEBBY/LivingRoomBG.png">
+<body background="source/LivingRoomBG.png">
 
 <div id="mymenu" class="menu">
   <div class = "profile-image" style="float:left;">
-    <span class = "overlay"style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="WEBBY/HOUSElogo.png" style="position:absolute,width:123px;height:125px;"></span>
+    <span class = "overlay"style="font-size:30px;cursor:pointer" onclick="openNav()"><img src="source/HOUSElogo.png" style="position:absolute,width:123px;height:125px;"></span>
   </div>
 <div id="mySidenav" class="sidenav">
 <ul>
@@ -208,25 +267,29 @@ ul.dropdown {
         <a href="#">View Food</a>
       </div> </ul>
   <ul class = "dropdown">
-     <a href="javascript:void(0)" class="dropbtn">Shop </a>
+     <a href="javascript:void(0)" class="dropbtn" onclick="document.getElementById('pop').style.display='block'">Shop </a>
       <div class="dropdown-content">
         <a href="#">Buy Toys</a>
         <a href="#">Buy Food</a>
       </div> </ul>
   <ul><a href="#">Settings</a> </ul>
   <ul><a href="#">About</a> </ul> </ul>
+  <ul><a href ="logout.php">Logout</a> </ul> </ul>
    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   </div>
 </div>
 
+<div id="pop">
+<button id="close" onclick="document.getElementById('pop').style.display='none'">X</button><br>
+<a href="http://www.google.com">This is a pop up box</a>﻿
+</div>
 
-<a href="miniGame.html">
- <ul class = "dropdown">
-  <div class="dropdown-content">
-        <a href="#">Mini Game 1</a>
-        <a href="#">Mini Game 2</a>
+<div class = "dropup">
 <div id="controller_img" class="controller_img" ></div>
-</a>
+<div class = "dropup-content">
+  <a href="#">Mini Game 1</a>
+  <a href="#">Mini Game 2</a>
+</div> </div> 
 
 <a href="#">
   <div id ="ball_img" class="ball_img"></div>
@@ -237,12 +300,11 @@ ul.dropdown {
 </a>
 
 <a href="#">
-  <div id ="dog_gif" class="dog_gif"></div>
+  <div id ="pet" class="pet"></div>
 </a>
 
 <a href="#">
   <div id ="coin_img" class="coin_img"></div>
-  <p class="score">Score: <span id="score_value">0</span></p>
 </a>
 
 
