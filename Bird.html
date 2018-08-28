@@ -3,18 +3,29 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
+
+            
+            
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
 }
+
+
+
+          
+			
 </style>
 </head>
-<body onload="startGame()">
-<script>
+<body onload="startGame()" >
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" >
 
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+
 
 function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
@@ -116,6 +127,15 @@ function updateGameArea() {
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+		alert("GAME OVER");
+		$.post('index.php',{post_score:score},function(data)
+						{
+							alert("success");
+							//alert(data);
+							//$('#result').html(data);
+						}
+					 )
+		document.location.reload();
             return;
         } 
     }
@@ -157,5 +177,10 @@ function accelerate(n) {
 <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
 <p>Use the ACCELERATE button to stay in the air</p>
 <p>How long can you stay alive?</p>
+<br>
+<a href="index.php"> go back</a>
+
+
+
 </body>
 </html>
