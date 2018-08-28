@@ -63,7 +63,7 @@ ul{
 
 ul a, .dropbtn {
     display: inline-block;
-    color: white;
+    color:#f9f9f9;
     text-align: center;
     padding: 12px 16px;
     text-decoration: none;
@@ -115,7 +115,7 @@ ul.dropdown {
     text-align: left;
 }
 
-.dropup-content a:hover {background-color: #f9f9f9}
+.dropup-content a:hover {background-color: red}
 
 .dropup:hover .dropup-content {
      display: block;
@@ -148,25 +148,22 @@ ul.dropdown {
 }
 
 .ball_img {
-  background:url(Ball.png);
-  background-size: 200px 200px;
+  background-size: 400px 400px;
   background-repeat:no-repeat;
   position: absolute;
-  top: 720px;
-  right:1600px;
+  top: 700px;
+  right:1550px;
   width: 256px;
   height: 256px;
 }
 
 .bowl_img {
-  background:url(Bowl.png);
-  background-size: 306px 178px;
   background-repeat:no-repeat;
   position: absolute;
-  top: 750px;
-  right:1000px;
-  width: 612px;
-  height: 356px;
+  top: 700px;
+  right:1150px;
+  width: 300px;
+  height: 256px;
 }
 
 .dog_gif {
@@ -189,16 +186,29 @@ ul.dropdown {
   cursor: pointer;
 }
 
-.score{
+.happiness{
   display: inline-block;
   width: 240px;
   font-size: 20px;
   color: #FFFFFF;
   text-align: right;
     }
-.score_value{
-   font-size: inherit;
+
+.hunger{
+  display: inline-block;
+  width: 240px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: right;
     }
+
+.varDisplay {
+  position: absolute;
+  top: 400px;
+  right:900px;
+  font-size: 30px;
+}   
+
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -244,6 +254,11 @@ ul.dropdown {
   </div>
 </div>
 
+<div class="varDisplay">
+<p> Happiness: <a id = "happiness">0</a> </p>
+<p> Hunger: <a id = "hunger">0</a> </p>
+</div>
+
 <div class = "dropup">
 <div id="controller_img" class="controller_img" ></div>
 <div class = "dropup-content">
@@ -251,13 +266,11 @@ ul.dropdown {
   <a href="#">Mini Game 2</a>
 </div> </div> 
 
-<a href="#">
-  <div id ="ball_img" class="ball_img"></div>
-</a>
 
-<a href="#">
-  <div id ="bowl_img" class="bowl_img"></div>
-</a>
+<input type="image" src = "Ball.png" id ="ball_img" class="ball_img" onclick="toyFunction()">
+
+
+<input type="image" src = "Bowl.png" id ="bowl_img" class="bowl_img" onclick="feedFunction()">
 
 <a href="#">
   <div id ="dog_gif" class="dog_gif"></div>
@@ -290,6 +303,20 @@ for (i = 0; i < dropdown.length; i++) {
       dropdownContent.style.display = "block";
     }
   });
+}
+
+var pet,food,toy;
+var happiness = 0,
+    hunger = 0;
+
+function feedFunction() {
+  hunger++;
+  document.getElementById("hunger").innerHTML = hunger;
+}
+
+function toyFunction() {
+  happiness++;
+  document.getElementById("happiness").innerHTML = happiness;
 }
 
 </script>
