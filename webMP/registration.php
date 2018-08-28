@@ -29,8 +29,8 @@
                 
 
                     // SQL
-                    $sql = "INSERT INTO users (username, birthday, password)
-                            VALUES ('$username', '$birthday', '$password')";
+                    $sql = "INSERT INTO users (username, birthday, password, money)
+                            VALUES ('$username', '$birthday', '$password', 500)";
                     
                     // Check SQL
                     if ($con->query($sql) === TRUE) {

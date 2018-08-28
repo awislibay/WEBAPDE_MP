@@ -153,26 +153,44 @@ ul.dropdown {
 }
 
 .ball_img {
-  background:url(source/Ball.png);
-  background-size: 200px 200px;
+  background-size: 400px 400px;
   background-repeat:no-repeat;
   position: absolute;
   top: 720px;
-  right:1600px;
+  right:1550px;
   width: 256px;
   height: 256px;
 }
 
 .bowl_img {
-  background:url(source/Bowl.png);
-  background-size: 306px 178px;
   background-repeat:no-repeat;
   position: absolute;
   top: 750px;
-  right:1000px;
-  width: 612px;
-  height: 356px;
+  right:1150px;
+  width: 300px;
+  height: 256px;
 }
+.happiness{
+  display: inline-block;
+  width: 240px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: right;
+}
+.hunger{
+  display: inline-block;
+  width: 240px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: right;
+    }
+.varDisplay {
+  position: absolute;
+  top: 400px;
+  right:900px;
+  font-size: 30px;
+} 
+
 <?php
               if($_SESSION['userID'] != NULL)
               $userID = $_SESSION['userID'];
@@ -186,7 +204,7 @@ ul.dropdown {
                   $pet = $row['pet'];
               }
 
-          ?>
+?>
 .pet {
   background:url("petSprites/<?php echo $pet?>.png");
   background-size: 500px 281px;
@@ -197,7 +215,6 @@ ul.dropdown {
   width: 500px;
   height: 281px;
 }
-
 .profile-image:hover .overlay {
   position:absolute;
   width: 123px;
@@ -261,13 +278,13 @@ ul.dropdown {
         <a href="#">Pet 2</a>
       </div> </ul>
   <ul class = "dropdown">
-    <a href="javascript:void(0)" class="dropbtn">Inventory </a>
+    <a onclick="document.getElementById('pop').style.display='block'">Inventory</a>
       <div class="dropdown-content">
         <a href="#">View Toys</a>
         <a href="#">View Food</a>
       </div> </ul>
   <ul class = "dropdown">
-     <a href="javascript:void(0)" class="dropbtn" onclick="document.getElementById('pop').style.display='block'">Shop </a>
+     <a href="javascript:void(0)" class="dropbtn">Shop </a>
       <div class="dropdown-content">
         <a href="#">Buy Toys</a>
         <a href="#">Buy Food</a>
@@ -279,9 +296,20 @@ ul.dropdown {
   </div>
 </div>
 
-<div id="pop">
-<button id="close" onclick="document.getElementById('pop').style.display='none'">X</button><br>
-<a href="http://www.google.com">This is a pop up box</a>﻿
+<div class="varDisplay">
+<p> Happiness: <a id = "happiness">0</a> </p>
+<p> Hunger: <a id = "hunger">0</a> </p>
+</div>
+
+<div id = "pop">
+    <button id="close" onclick="document.getElementById('pop').style.display = 'none'">X</button>
+      <h2> Food </h2> 
+      <button id="iFood"onclick="feedFromInventory(2)" >Apple</button>
+      <button id="iFood"onclick="feedFromInventory(3)">Ice Cream</button>
+      <h2> Toys </h2>
+      <button id="Bone"onclick="playFromInventory(2)">Bone</button>
+      <button id="Stick"onclick="playFromInventory(3)">Stick</button>
+      </ul>
 </div>
 
 <div class = "dropup">
@@ -291,13 +319,10 @@ ul.dropdown {
   <a href="#">Mini Game 2</a>
 </div> </div> 
 
-<a href="#">
-  <div id ="ball_img" class="ball_img"></div>
-</a>
+<input type="image" src = "source/Ball.png" id ="ball_img" class="ball_img" onclick="toyFunction()">
 
-<a href="#">
-  <div id ="bowl_img" class="bowl_img"></div>
-</a>
+
+<input type="image" src = "source/Bowl.png" id ="bowl_img" class="bowl_img" onclick="feedFunction()">
 
 <a href="#">
   <div id ="pet" class="pet"></div>
@@ -307,7 +332,58 @@ ul.dropdown {
   <div id ="coin_img" class="coin_img"></div>
 </a>
 
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
 
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+var food;
+var foodType;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+var pet,food,toy;
+var happiness = 0,
+    hunger = 0;
+
+function feedFromInventory(add) {
+    hunger = hunger + add;
+    document.getElementById("hunger").innerHTML = hunger;
+}
+
+function playFromInventory(add) {
+  happiness = happiness + add;
+  document.getElementById("happiness").innerHTML = happiness;
+}
+
+function feedFunction() {
+  hunger++;
+  document.getElementById("hunger").innerHTML = hunger;
+}
+
+function toyFunction() {
+  happiness++;
+  document.getElementById("happiness").innerHTML = happiness;
+}
+
+
+</script>
 <script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "100%";
